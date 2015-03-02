@@ -1,8 +1,9 @@
+# -*- coding: utf-8 -*-
 import socket
 import sys
 
-if __name__ == '__main__':
-    message = sys.argv[1]
+def client(message):
+    message = message.encode('utf-8')
     client_socket = socket.socket(
         socket.AF_INET, 
         socket.SOCK_STREAM,
@@ -20,3 +21,8 @@ if __name__ == '__main__':
             done = True
             client_socket.close()
     sys.stdout.write('{}'.format(message_received))
+    return message_received.decode('utf-8') 
+
+if __name__ == '__main__':
+    message = sys.argv[1]
+    client(message)

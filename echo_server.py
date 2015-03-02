@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-
 import socket
 
-if __name__ == '__main__':
-    """Run from terminal, this will recieve a messages and send them back."""
+def server():
     server_socket = socket.socket(
         socket.AF_INET, 
         socket.SOCK_STREAM,
@@ -9,9 +9,9 @@ if __name__ == '__main__':
     server_socket.bind(('127.0.0.1', 50000))
     server_socket.listen(1)
     bsize = 32
-    message = ''
     try:
         while True:
+            message = ''
             done = False
             conn, addr = server_socket.accept()
             while not done:
@@ -25,3 +25,6 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print '{}: {}'.format('Message received', message)
         server_socket.close()
+        
+if __name__ == '__main__':
+    server()
