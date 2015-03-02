@@ -20,7 +20,7 @@ def client(message):
         if len(piece) < bsize:
             done = True
             client_socket.close()
-    sys.stdout.write('{}'.format(message_received))
+    # sys.stdout.write('{}'.format(message_received))
     return message_received.decode('utf-8') 
 
 if __name__ == '__main__':
